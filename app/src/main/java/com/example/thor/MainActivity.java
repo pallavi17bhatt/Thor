@@ -24,8 +24,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnClicked(View view) {
+        apiCall("London,uk");
+    }
+
+    private void apiCall(String city) {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("http://worldclockapi.com/api/json/est/now").build();
+        Request request = new Request.Builder().url("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=0d23334866451f6f183851a9931838d7").build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.textView2);
         tv.setText(data);
     }
+
+
 
 
 
