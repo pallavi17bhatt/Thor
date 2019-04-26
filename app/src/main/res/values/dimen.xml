@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="btnwidth">163dp</dimen>
+    <dimen name="btnheight">130dp</dimen>
+    <dimen name="marginStart">8dp</dimen>
+    <dimen name="marginbtn1n2top">60dp</dimen>
+    <dimen name="margintop">44dp</dimen>
+</resources>

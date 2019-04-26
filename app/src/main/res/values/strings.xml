@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Thor</string>
+    <string name="btn1">Banglore</string>
+    <string name="btn2">Singapore</string>
+    <string name="btn3">London</string>
+    <string name="btn4">Jakarta</string>
+    <string name="btn5">Rome</string>
+    <string name="btn6">Paris</string>
 </resources>

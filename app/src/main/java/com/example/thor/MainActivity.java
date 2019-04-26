@@ -42,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        changeMessage(data);
+                        //changeMessage(data);
                     }
                 });
             }
         });
     }
 
-    public void changeMessage (String data) {
+    /*public void changeMessage (String data) {
         TextView tv = (TextView) findViewById(R.id.textView2);
         tv.setText(data);
     }
-
+*/
 
 
 
