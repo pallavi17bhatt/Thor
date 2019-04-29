@@ -14,6 +14,8 @@
       android:layout_marginStart="@dimen/marginStart"
       android:layout_marginTop="@dimen/margintop"
       android:text="@string/btn5"
+      android:onClick="onRome"
+
       app:layout_constraintEnd_toStartOf="@+id/button6"
       app:layout_constraintHorizontal_bias="0.367"
       app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +30,7 @@
       android:layout_marginTop="@dimen/margintop"
       android:layout_marginEnd="@dimen/marginStart"
       android:text="@string/btn6"
+      android:onClick="onParis"
       app:layout_constraintEnd_toEndOf="parent"
 
       app:layout_constraintStart_toEndOf="@+id/button5"
@@ -42,11 +45,13 @@
       android:layout_marginTop="@dimen/margintop"
       android:layout_marginEnd="@dimen/marginStart"
       android:text="@string/btn3"
+      android:onClick="onLondon"
       app:layout_constraintEnd_toStartOf="@+id/button4"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/button1" />
 
   <Button
+
       android:id="@+id/button4"
       style="@style/Widget.AppCompat.Button.Borderless.Colored"
       android:layout_width="@dimen/btnwidth"
@@ -55,6 +60,8 @@
       android:layout_marginTop="@dimen/margintop"
       android:layout_marginEnd="@dimen/marginStart"
       android:text="@string/btn4"
+      android:onClick="onJakarta"
+
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/button3"
       app:layout_constraintTop_toBottomOf="@+id/button2" />
@@ -67,7 +74,7 @@
       android:layout_marginStart="@dimen/marginStart"
       android:layout_marginTop="@dimen/marginbtn1n2top"
       android:layout_marginEnd="@dimen/marginStart"
-
+      android:onClick="onSingapore"
       android:text="@string/btn2"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@+id/button1"
@@ -82,6 +89,7 @@
       android:layout_marginTop="@dimen/marginbtn1n2top"
       android:layout_marginEnd="@dimen/marginStart"
       android:text="@string/btn1"
+      android:onClick="onBanglore"
       app:layout_constraintEnd_toStartOf="@+id/button2"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
+    Button b1,b2,b3,b4,b5,b6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,53 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    public void onBanglore(View view) {
+        b1=(Button)findViewById(R.id.button1);
+        String city = b1.getText().toString();
+        city=city.concat(",ind");
+        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
+
+
+
+    }
+
+    public void onSingapore(View view) {
+        b2=(Button)findViewById(R.id.button2);
+        String city = b2.getText().toString();
+        city=city.concat(",sgp");
+        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onLondon(View view) {
+        b3=(Button)findViewById(R.id.button3);
+        String city = b3.getText().toString();
+        city=city.concat(",uk");
+        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onJakarta(View view) {
+        b4=(Button)findViewById(R.id.button4);
+        String city = b4.getText().toString();
+        city=city.concat(",idn");
+        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    public void onRome(View view) {
+        b5=(Button)findViewById(R.id.button5);
+        String city = b5.getText().toString();
+        city=city.concat(",ita");
+        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onParis(View view) {
+        b6=(Button)findViewById(R.id.button6);
+        String city = b6.getText().toString();
+        city=city.concat(",fra");
+        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
     }
 
     /*public void changeMessage (String data) {
