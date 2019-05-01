@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String temp_data = "temp_data";
     public static final String visible_data = "visible_data";
     public static final String speed_data = "speed_data";
+    public static final String info_data = "info_data";
+
 
     HashMap<String, String> country = new HashMap<String,String>();
 
@@ -57,27 +61,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Response response) throws IOException {
                 String data = response.body().string();
-                try {
-                    JSONObject json = new JSONObject(data);
-                    String cityName = json.get("name").toString();
-                    JSONArray weather = json.getJSONArray("weather");
-                    String description = weather.getJSONObject(0).get("description").toString();
-                    JSONObject main = json.getJSONObject("main");
-                    String temp = main.get("temp").toString();
-                    String visibility = json.get("visibility").toString();
-                    JSONObject wind = json.getJSONObject("wind");
-                    String speed = wind.get("speed").toString();
+
+
 
                     Intent i = new Intent(getApplicationContext(), CityWeather.class);
-                    i.putExtra(Weather_data, cityName);
-                    i.putExtra(description_data, description);
-                    i.putExtra(temp_data, temp);
-                    i.putExtra(visible_data, visibility);
-                    i.putExtra(speed_data, speed);
+
+                    i.putExtra(info_data, data);
+
                     startActivity(i);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
 
             }
         });
