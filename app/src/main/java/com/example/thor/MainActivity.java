@@ -14,14 +14,23 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
-    Button b1,b2,b3,b4,b5,b6;
+
+    HashMap<String, String> country = new HashMap<String,String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        country.put("Banglore","Banglore,ind");
+        country.put("Singapore","Singapore,sgp");
+        country.put("London","London,uk");
+        country.put("Jakarta","Jakarta,idn");
+        country.put("Rome","Rome,ita");
+        country.put("Paris","Paris,fra");
         setContentView(R.layout.activity_main);
     }
 
@@ -44,68 +53,17 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //changeMessage(data);
+                       
                     }
                 });
             }
         });
     }
 
-    public void onBanglore(View view) {
-        b1=(Button)findViewById(R.id.button1);
-        String city = b1.getText().toString();
-        city=city.concat(",ind");
-        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
 
-
-
-    }
-
-    public void onSingapore(View view) {
-        b2=(Button)findViewById(R.id.button2);
-        String city = b2.getText().toString();
-        city=city.concat(",sgp");
+    public void showWeather(View view) {
+       Button b=(Button)view;
+        String city = country.get(b.getText().toString());
         Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
     }
-
-    public void onLondon(View view) {
-        b3=(Button)findViewById(R.id.button3);
-        String city = b3.getText().toString();
-        city=city.concat(",uk");
-        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
-    }
-
-    public void onJakarta(View view) {
-        b4=(Button)findViewById(R.id.button4);
-        String city = b4.getText().toString();
-        city=city.concat(",idn");
-        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
-    }
-
-
-
-    public void onRome(View view) {
-        b5=(Button)findViewById(R.id.button5);
-        String city = b5.getText().toString();
-        city=city.concat(",ita");
-        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
-    }
-
-    public void onParis(View view) {
-        b6=(Button)findViewById(R.id.button6);
-        String city = b6.getText().toString();
-        city=city.concat(",fra");
-        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
-    }
-
-    /*public void changeMessage (String data) {
-        TextView tv = (TextView) findViewById(R.id.textView2);
-        tv.setText(data);
-    }
-*/
-
-
-
-
-
 }
