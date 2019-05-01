@@ -25,17 +25,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        country.put("Banglore","Banglore,ind");
+        country.put("Bengaluru","Bengaluru,ind");
         country.put("Singapore","Singapore,sgp");
         country.put("London","London,uk");
         country.put("Jakarta","Jakarta,idn");
         country.put("Rome","Rome,ita");
         country.put("Paris","Paris,fra");
         setContentView(R.layout.activity_main);
-    }
-
-    public void onBtnClicked(View view) {
-        apiCall("London,uk");
     }
 
     private void apiCall(String city) {
@@ -45,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Request request, IOException e) {
                 Log.e("failure:", e.getMessage());
+                Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                       
+                       Toast.makeText(getApplicationContext(),data, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -64,6 +62,6 @@ public class MainActivity extends AppCompatActivity {
     public void showWeather(View view) {
        Button b=(Button)view;
         String city = country.get(b.getText().toString());
-        Toast.makeText(getApplicationContext(), city, Toast.LENGTH_SHORT).show();
+        apiCall(city);
     }
 }
