@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.okhttp.Callback;
@@ -14,13 +13,20 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
     public static final String Weather_data = "Weather_data";
+    public static final String description_data = "description_data";
+    public static final String temp_data = "temp_data";
+    public static final String visible_data = "visible_data";
+    public static final String speed_data = "speed_data";
 
     HashMap<String, String> country = new HashMap<String,String>();
 
@@ -50,18 +56,29 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Response response) throws IOException {
-                final String data = response.body().string();
-                MainActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                       //Toast.makeText(getApplicationContext(),data, Toast.LENGTH_SHORT).show();
-                       Intent i = new Intent(getApplicationContext(), City_Weather.class);
-                       i.putExtra(Weather_data, data);
-                       startActivity(i);
-                    }
+                String data = response.body().string();
+                try {
+                    JSONObject json = new JSONObject(data);
+                    String cityName = json.get("name").toString();
+                    JSONArray weather = json.getJSONArray("weather");
+                    String description = weather.getJSONObject(0).get("description").toString();
+                    JSONObject main = json.getJSONObject("main");
+                    String temp = main.get("temp").toString();
+                    String visibility = json.get("visibility").toString();
+                    JSONObject wind = json.getJSONObject("wind");
+                    String speed = wind.get("speed").toString();
 
+                    Intent i = new Intent(getApplicationContext(), CityWeather.class);
+                    i.putExtra(Weather_data, cityName);
+                    i.putExtra(description_data, description);
+                    i.putExtra(temp_data, temp);
+                    i.putExtra(visible_data, visibility);
+                    i.putExtra(speed_data, speed);
+                    startActivity(i);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                });
             }
         });
     }
