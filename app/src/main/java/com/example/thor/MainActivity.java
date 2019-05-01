@@ -1,5 +1,6 @@
 package com.example.thor;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +20,10 @@ import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
+    public static final String Weather_data = "Weather_data";
 
     HashMap<String, String> country = new HashMap<String,String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                       Toast.makeText(getApplicationContext(),data, Toast.LENGTH_SHORT).show();
+                       //Toast.makeText(getApplicationContext(),data, Toast.LENGTH_SHORT).show();
+                       Intent i = new Intent(getApplicationContext(), City_Weather.class);
+                       i.putExtra(Weather_data, data);
+                       startActivity(i);
                     }
+
+
                 });
             }
         });
